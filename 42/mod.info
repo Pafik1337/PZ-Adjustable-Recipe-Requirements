@@ -4,4 +4,7 @@ poster=poster.png
 description=Removes skill level requirements from crafting and building recipes, optionally teaches every recipe, and makes crafting time depend on how your skill compares to the original requirement.
 description=
 description=Everything is configurable per save in Sandbox Options > Adjustable Recipe Requirements.
+description=
+description=Safe to add to an existing save (Load > More > Mods); it adds no items or objects, and existing saves use the default settings.
+description=Safe to remove mid-game: requirements and crafting time return to vanilla. To make sure "Know all recipes" is cleared, turn that setting off and load the save once before removing the mod.
 versionMin=42.0.0

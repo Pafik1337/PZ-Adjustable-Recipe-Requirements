@@ -14,6 +14,12 @@ Every feature is a per-save setting: **Sandbox Options → Adjustable Recipe Req
 
 Copy or keep this folder at `%USERPROFILE%\Zomboid\mods\AdjustableRecipeRequirements\`, then enable it in the main menu **Mods** screen (or per save via Load → More → Mods).
 
+## Adding to or removing from an existing save
+
+- **Adding mid-game: safe.** The mod adds no items, objects or map data. Enable it via Load → More → Mods. Requirements are removed on load, recipes become known when the character loads, and time/XP changes apply to the next craft. Existing saves get the default settings (single-player sandbox options usually can't be edited after world creation).
+- **Removing mid-game: safe.** Skill requirements and crafting time return to vanilla immediately. "Know all recipes" uses the game's own know-all flag, which may be stored with the character — to be sure it's cleared, set `KnowAllRecipes` to off and load the save once before removing the mod.
+- Back up the save folder (`%USERPROFILE%\Zomboid\Saves\<mode>\<save>\`) before changing mods on a save you care about.
+
 ## Settings
 
 | Option (SandboxVars.AdjustableRecipeRequirements.*) | Default | Meaning |
