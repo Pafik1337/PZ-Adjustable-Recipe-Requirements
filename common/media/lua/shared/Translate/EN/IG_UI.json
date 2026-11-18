@@ -1,0 +1,6 @@
+{
+    "IGUI_ARR_SkillModifier": "Skill modifier:",
+    "IGUI_ARR_UnderSkilled": "Under-skilled: x%1 time",
+    "IGUI_ARR_Skilled": "Skilled: x%1 time",
+    "IGUI_ARR_BaseTime": "base %1 s"
+}

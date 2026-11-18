@@ -1,0 +1,23 @@
+{
+    "Sandbox_AdjustableRecipeRequirements": "Adjustable Recipe Requirements",
+    "Sandbox_ARR_RemoveSkillRequirements": "Remove skill requirements",
+    "Sandbox_ARR_RemoveSkillRequirements_tooltip": "Any crafting or building recipe can be made regardless of skill level, as long as you have the ingredients and tools.",
+    "Sandbox_ARR_KnowAllRecipes": "Know all recipes",
+    "Sandbox_ARR_KnowAllRecipes_tooltip": "Every recipe is known from the start. Turn off to still require magazines, journals and auto-learning to unlock recipes.",
+    "Sandbox_ARR_SkillTimeScaling": "Skill-based crafting time",
+    "Sandbox_ARR_SkillTimeScaling_tooltip": "Hand crafting and building take longer when your skill is below the recipe's original requirement and less time when above it.<br>Time = base x (1 + percent)^(required - your level), averaged over all required skills.<br>Recipes without a skill requirement keep vanilla timing. Workstation crafting is not affected.",
+    "Sandbox_ARR_TimePercentPerLevel": "Time change per level (%)",
+    "Sandbox_ARR_TimePercentPerLevel_tooltip": "Compounding change per level of difference. With 15: 2 levels under = x1.32, 6 under = x2.31, 2 over = x0.76.",
+    "Sandbox_ARR_MaxTimeMultiplier": "Maximum time multiplier",
+    "Sandbox_ARR_MaxTimeMultiplier_tooltip": "Crafting never takes longer than base time times this value.",
+    "Sandbox_ARR_MinTimeMultiplier": "Minimum time multiplier",
+    "Sandbox_ARR_MinTimeMultiplier_tooltip": "Crafting never takes less than base time times this value.",
+    "Sandbox_ARR_UnderskilledXpBonus": "Extra XP when under-skilled",
+    "Sandbox_ARR_UnderskilledXpBonus_tooltip": "Crafting or building a recipe above your skill level gives extra XP.",
+    "Sandbox_ARR_XpPercentPerLevel": "XP bonus per missing level (%)",
+    "Sandbox_ARR_XpPercentPerLevel_tooltip": "Compounding XP bonus per level you are below the requirement, averaged over all required skills. With 10: 3 levels under = x1.33 XP.",
+    "Sandbox_ARR_MaxXpMultiplier": "Maximum XP multiplier",
+    "Sandbox_ARR_MaxXpMultiplier_tooltip": "The XP bonus never goes above this multiplier.",
+    "Sandbox_ARR_ShowTimeModifier": "Show time modifier in crafting menu",
+    "Sandbox_ARR_ShowTimeModifier_tooltip": "Shows a line like \"Under-skilled: x2.31 time\" in the crafting menu."
+}

@@ -1,0 +1,7 @@
+name=Adjustable Recipe Requirements
+id=AdjustableRecipeRequirements
+poster=poster.png
+description=Removes skill level requirements from crafting and building recipes, optionally teaches every recipe, and makes crafting time depend on how your skill compares to the original requirement.
+description=
+description=Everything is configurable per save in Sandbox Options > Adjustable Recipe Requirements.
+versionMin=42.0.0
