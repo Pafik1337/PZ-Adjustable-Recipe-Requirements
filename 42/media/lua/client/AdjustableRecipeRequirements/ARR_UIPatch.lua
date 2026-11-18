@@ -77,20 +77,38 @@ end
 -- Hand craft panel "Time required" label
 ---------------------------------------------------------------------------
 if ISWidgetHandCraftControl then
+    -- Vanilla sets this label's text every frame with ISLabel:setName, which snaps a
+    -- left-aligned label back to its creation x (0) whenever the text changes. So we
+    -- hide the label from vanilla, set our text without moving it, and re-run the
+    -- panel layout only when the text width changes (keeps the progress bar aligned).
     local orig = ISWidgetHandCraftControl.prerender
     function ISWidgetHandCraftControl:prerender()
+        local label = self.durationLabel
+        local recipe = label and self.logic and self.player and self.logic:getRecipe()
+        if not recipe then
+            orig(self)
+            return
+        end
+
+        self.durationLabel = nil
         orig(self)
-        if not self.durationLabel or not self.logic or not self.player then return end
-        local recipe = self.logic:getRecipe()
-        if not recipe then return end
+        self.durationLabel = label
 
         local info = ARR.getTimeInfo(recipe, self.player)
         local seconds = info.time
         local mm = math.floor(seconds / 60)
         local ss = math.floor(math.fmod(seconds, 60))
         local text = string.format(getText("IGUI_CraftingWindow_TimeRequired") .. " %02dm %02ds", mm, ss)
-        local mod = modifierText(info)
-        if mod then text = text .. "  (" .. mod .. ")" end
-        self.durationLabel:setName(text)
+        if info.scaled and ARR.opt("ShowTimeModifier") and math.abs(info.multiplier - 1) >= 0.005 then
+            text = text .. " (x" .. fmt(info.multiplier) .. ")"
+        end
+
+        if label.name ~= text then
+            local oldWidth = label:getWidth()
+            label:setNameWithoutMoving(text)
+            if label:getWidth() ~= oldWidth and self.calculateLayout then
+                self:calculateLayout(self.width, self.height)
+            end
+        end
     end
 end
