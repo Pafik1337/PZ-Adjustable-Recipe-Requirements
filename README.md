@@ -16,9 +16,14 @@ Copy or keep this folder at `%USERPROFILE%\Zomboid\mods\AdjustableRecipeRequirem
 
 ## Adding to or removing from an existing save
 
-- **Adding mid-game: safe.** The mod adds no items, objects or map data. Enable it via Load → More → Mods. Requirements are removed on load, recipes become known when the character loads, and time/XP changes apply to the next craft. Existing saves get the default settings (single-player sandbox options usually can't be edited after world creation).
+- **Adding mid-game: safe.** The mod adds no items, objects or map data. Enable it via Load → More → Mods. Requirements are removed on load, recipes become known when the character loads, and time/XP changes apply to the next craft. Existing saves start with the default settings — change them in-game (below).
 - **Removing mid-game: safe.** Skill requirements and crafting time return to vanilla immediately. "Know all recipes" uses the game's own know-all flag, which may be stored with the character — to be sure it's cleared, set `KnowAllRecipes` to off and load the save once before removing the mod.
 - Back up the save folder (`%USERPROFILE%\Zomboid\Saves\<mode>\<save>\`) before changing mods on a save you care about.
+
+## Changing settings mid-game
+
+- **Single player:** Esc → Options → Mods → Adjustable Recipe Requirements → **Recipe requirement settings...**. A window with only this mod's settings opens; **Apply** takes effect immediately and is stored in the save the next time the game saves.
+- **Multiplayer:** server admins use Admin Panel → Sandbox Options (or edit the server's `*_SandboxVars.lua`).
 
 ## Settings
 
@@ -66,6 +71,7 @@ Example, requirement 8, 15%/level: level 0 → ×3.06, 2 → ×2.31, 6 → ×1.3
       ARR_BuildPatch.lua                      ISBuildIsoEntity duration + XP
     lua/client/AdjustableRecipeRequirements/
       ARR_UIPatch.lua                         crafting menu time display
+      ARR_SettingsUI.lua                      in-game settings window (SP), opened from Mod Options
 common/
   media/lua/shared/Translate/EN/
     Sandbox.json                              settings texts

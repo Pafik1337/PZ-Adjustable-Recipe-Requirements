@@ -239,6 +239,15 @@ function ARR.applyPlayer(player)
     end
 end
 
+-- Re-apply everything after settings changed mid-game.
+function ARR.refresh()
+    ARR.applyRequirements()
+    for i = 0, getNumActivePlayers() - 1 do
+        local player = getSpecificPlayer(i)
+        if player then ARR.applyPlayer(player) end
+    end
+end
+
 ---------------------------------------------------------------------------
 -- Events
 ---------------------------------------------------------------------------

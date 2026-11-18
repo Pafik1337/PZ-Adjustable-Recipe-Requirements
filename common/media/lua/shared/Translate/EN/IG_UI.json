@@ -2,5 +2,8 @@
     "IGUI_ARR_SkillModifier": "Skill modifier:",
     "IGUI_ARR_UnderSkilled": "Under-skilled: x%1 time",
     "IGUI_ARR_Skilled": "Skilled: x%1 time",
-    "IGUI_ARR_BaseTime": "base %1 s"
+    "IGUI_ARR_BaseTime": "base %1 s",
+    "IGUI_ARR_OpenSettings": "Recipe requirement settings...",
+    "IGUI_ARR_OpenSettings_tooltip": "Change this save's Adjustable Recipe Requirements settings. Works in single player while a game is loaded. In multiplayer, admins use Admin Panel > Sandbox Options.",
+    "IGUI_ARR_ModOptionsDesc": "The settings are stored per save. While playing single player, use the button below to change them for the current save."
 }

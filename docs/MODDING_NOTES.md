@@ -53,7 +53,16 @@ option MyNamespace.Percent
 ```
 Types: `boolean`, `integer`, `double` (`min`/`max`/`default`), also `enum`/`string` exist. Read in Lua as `SandboxVars.MyNamespace.MyOption`. Values are **not** available at `OnGameBoot`; they are by `OnInitGlobalModData` / `OnGameStart`. Always keep Lua-side defaults.
 
-The alternative, `PZAPI.ModOptions` (`media/lua/client/PZAPI/ModOptions.lua`), is client-only, global across saves, and not synced — fine for UI preferences, not for gameplay balance.
+**Changing sandbox options while a single-player game runs** *(verified)*:
+- `getSandboxOptions():set("NS.Option", value)` changes the live value, but does **not** refresh the Lua `SandboxVars` table — call `getSandboxOptions():toLua()` afterwards.
+- The world save (`GameWindow`, same method that fires `OnSave`) writes `SandboxOptions.instance` to `map_sand.bin`, so the change persists with the save.
+- Vanilla UI for this: `ISServerSandboxOptionsUI` (`client/ISUI/AdminPanel/`), opened from the debug menu (SP) or admin panel (MP). Its page list comes from `ServerSettingsScreen.getSandboxSettingsTable()` (mod pages: `{name = "Sandbox_<page>" translated, settings = {{name = "NS.Option"}, ...}}`; entry `[1]` gets replaced by the Presets page). `settingsFromUI` calls `getSandboxOptions():set` when `not isClient()`; MP uses `options:sendToServer()`. This mod derives `ARR_SettingsUI` from it and filters the table to its own page.
+
+The alternative, `PZAPI.ModOptions` (`media/lua/client/PZAPI/ModOptions.lua`), is client-only, global across saves, and not synced — fine for UI preferences, not for gameplay balance. API: `local o = PZAPI.ModOptions:create(id, title)`, then `o:addTickBox(id, name, value, tooltip)`, `addSlider(id, name, min, max, step, value, tooltip)`, `addComboBox`, `addTextEntry`, `addKeyBind`, `addButton(id, name, tooltip, onclick, target, ...)`, `addDescription(text)`, `addTitle`, `addSeparator`; read with `o:getOption(id):getValue()`. Values persist in `Zomboid/ModOptions.ini`. `require "PZAPI/ModOptions"` first — client files load alphabetically, so a mod folder starting with A-O loads before `PZAPI/`.
+
+### UI gotchas
+- `ISLabel:setName(text)` snaps a left-aligned label back to the x it was **created** at (`originalX`) whenever the text changes; layouts that move labels with `setX` lose that position. Use `setNameWithoutMoving(text)` and re-run the parent's layout if the width changed.
+- `OnFillWorldObjectContextMenu(playerNum, context, worldObjects, test)` — return early when `test` is true; `context:addOption(text, target, func, ...)`.
 
 ## 3. Crafting system (B42)
 
